@@ -19,7 +19,8 @@ python -m pip install --upgrade pip==23.3.2 setuptools==68.2.2 wheel==0.42.0
 pip install --use-pep517 --only-binary=:all: Pillow==11.0.0
 
 # Instalar resto de dependencias
-pip install -r requirements.txt --no-cache-dir
+pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt --no-cache-dir --no-cache-dir
 
 # Verificar instalación de Django
 python -c "import django; print(f'Django version: {django.__version__}')"
