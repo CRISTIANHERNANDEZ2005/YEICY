@@ -1,15 +1,15 @@
-# Dependencias principales
-Django==4.2.11
-Pillow==11.0.0  # Para el manejo de imágenes (versión estable)
+# Dependencias principales (actualizadas para Python 3.13)
+Django==5.0.4
+Pillow==11.0.0
 
 # Dependencias de desarrollo
-djangorestframework==3.14.0  # Opcional, para crear APIs
-python-dotenv==1.0.0  # Para manejar variables de entorno
-django-crispy-forms==2.0  # Para mejorar la apariencia de los formularios
-django-debug-toolbar==4.2.0  # Herramienta de depuración (solo desarrollo)
+djangorestframework==3.14.0
+python-dotenv==1.0.0
+django-crispy-forms==2.0
+django-debug-toolbar==4.2.0
 
-# Dependencias de producción
-gunicorn==21.2.0  # Servidor WSGI para producción
-psycopg[binary,pool]==3.1.14  # Adaptador PostgreSQL moderno para Python 3.13+
-whitenoise==6.5.0  # Para servir archivos estáticos en producción
-dj-database-url==2.1.0  # Para configuración de base de datos en producción
+# Dependencias de producción (actualizadas)
+gunicorn==21.2.0
+psycopg[binary,pool]==3.2.8  # Versión compatible con Python 3.13
+whitenoise==6.5.0
+dj-database-url==2.1.0

@@ -1,30 +1,27 @@
 #!/bin/bash
 
-# Actualizar el sistema e instalar dependencias necesarias
-#!/bin/bash
-
-# Configurar entorno seguro sin dependencias de sistema
-
-# Instalar las dependencias de Python
-#!/bin/bash
-
-# Instalar dependencias en entorno aislado
+# Crear y activar entorno virtual
 python -m venv .venv
 source .venv/bin/activate
 
-# Versiones específicas compatibles con Render
-python -m pip install --upgrade pip==23.3.2 setuptools==68.2.2 wheel==0.42.0
+# Instalar las versiones más recientes de pip/setuptools/wheel
+python -m pip install --upgrade pip setuptools wheel
 
-# Instalar Pillow con wheel precompilado
-pip install --use-pep517 --only-binary=:all: Pillow==11.0.0
+# Instalar psycopg 3.2.x que es compatible con Python 3.13
+pip install --no-cache-dir "psycopg[binary,pool]==3.2.8"
 
-# Instalar resto de dependencias
-pip install --upgrade pip setuptools wheel
+# Instalar Django 5.x que es compatible con Python 3.13
+pip install --no-cache-dir "Django==5.0.4"
+
+# Instalar Pillow
+pip install --no-cache-dir "Pillow==11.0.0"
+
+# Instalar el resto de dependencias (actualizadas para compatibilidad)
 pip install --no-cache-dir -r requirements.txt
 
-# Verificar instalación de Django
+# Verificar instalación
 python -c "import django; print(f'Django version: {django.__version__}')"
 
-# Ejecutar las migraciones de Django y recolectar archivos estáticos
+# Ejecutar migraciones y recolectar estáticos
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
