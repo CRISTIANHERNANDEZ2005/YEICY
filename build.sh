@@ -1,4 +1,4 @@
-#!/bin/bas
+#!/bin/bash
 
 # Actualizar el sistema e instalar dependencias necesarias
 apt-get update
@@ -11,4 +11,3 @@ pip install -r requirements.txt
 # Ejecutar las migraciones de Django y recolectar archivos estáticos
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
-python manage.py runserver 0.0.0.0:10000
