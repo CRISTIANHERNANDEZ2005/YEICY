@@ -20,7 +20,8 @@ pip install --use-pep517 --only-binary=:all: Pillow==11.0.0
 
 # Instalar resto de dependencias
 pip install --upgrade pip setuptools wheel
-pip install -r requirements.txt --no-cache-dir --no-cache-dir
+pip install --no-cache-dir psycopg2-binary==2.9.9
+pip install --no-cache-dir -r requirements.txt
 
 # Verificar instalación de Django
 python -c "import django; print(f'Django version: {django.__version__}')"
