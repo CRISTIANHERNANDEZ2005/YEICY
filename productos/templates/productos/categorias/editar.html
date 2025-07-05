@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar {{ categoria.nombre }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-warning text-white">
+                <h4 class="mb-0">Editar Categoría</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                        {{ form.nombre }}
+                        <div class="invalid-feedback">
+                            El nombre de la categoría es obligatorio.
+                        </div>
+                        {% if form.nombre.errors %}
+                            <div class="text-danger">
+                                {{ form.nombre.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_descripcion" class="form-label">Descripción</label>
+                        {{ form.descripcion }}
+                        {% if form.descripcion.errors %}
+                            <div class="text-danger">
+                                {{ form.descripcion.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'productos:detalle_categoria' categoria.id %}" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-warning text-white">
+                            <i class="fas fa-save"></i> Actualizar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                <small>Creada el: {{ categoria.fecha_creacion|date:"d/m/Y H:i" }}</small><br>
+                <small>Última actualización: {{ categoria.fecha_actualizacion|date:"d/m/Y H:i" }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

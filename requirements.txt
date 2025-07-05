@@ -1,0 +1,13 @@
+# Dependencias principales
+Django==4.2.7
+Pillow==10.1.0  # Para el manejo de imágenes
+
+# Dependencias de desarrollo
+djangorestframework==3.14.0  # Opcional, para crear APIs
+python-dotenv==1.0.0  # Para manejar variables de entorno
+django-crispy-forms==2.0  # Para mejorar la apariencia de los formularios
+django-debug-toolbar==4.2.0  # Herramienta de depuración (solo desarrollo)
+
+# Dependencias de producción
+gunicorn==21.2.0  # Servidor WSGI para producción
+whitenoise==6.5.0  # Para servir archivos estáticos en producción

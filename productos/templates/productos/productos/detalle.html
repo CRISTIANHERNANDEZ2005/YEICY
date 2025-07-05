@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ producto.nombre }}{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1 class="mb-0">{{ producto.nombre }}</h1>
+        <p class="text-muted">Creado el {{ producto.fecha_creacion|date:"d/m/Y H:i" }}</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <div class="btn-group" role="group">
+            <a href="{% url 'productos:editar_producto' producto.id %}" class="btn btn-warning text-white">
+                <i class="fas fa-edit"></i> Editar
+            </a>
+            <a href="{% url 'productos:eliminar_producto' producto.id %}" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Eliminar
+            </a>
+            <a href="{% url 'productos:lista_productos' %}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row producto-detalle">
+    <div class="col-md-5">
+        {% if producto.imagen %}
+            <img src="{{ producto.imagen.url }}" class="img-fluid rounded" alt="{{ producto.nombre }}">
+        {% else %}
+            <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 400px;">
+                <i class="fas fa-image fa-5x text-muted"></i>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-7 producto-info">
+        <div class="mb-4">
+            {% if producto.categoria %}
+                <span class="producto-categoria">{{ producto.categoria.nombre }}</span>
+            {% else %}
+                <span class="producto-categoria text-muted">Sin categoría</span>
+            {% endif %}
+            {% if producto.disponible %}
+                <span class="badge bg-success">Disponible</span>
+            {% else %}
+                <span class="badge bg-danger">No disponible</span>
+            {% endif %}
+        </div>
+        
+        <div class="producto-precio">${{ producto.precio }}</div>
+        
+        <div class="producto-stock">
+            <strong>Stock:</strong> {{ producto.stock }} unidades
+        </div>
+        
+        <div class="mb-4">
+            <h4>Descripción</h4>
+            <p>{{ producto.descripcion }}</p>
+        </div>
+        
+        <hr>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Categoría:</strong> 
+                    {% if producto.categoria %}
+                        <a href="{% url 'productos:detalle_categoria' producto.categoria.id %}" class="text-decoration-none">
+                            {{ producto.categoria.nombre }}
+                        </a>
+                    {% else %}
+                        <span class="text-muted">Sin categoría</span>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Estado:</strong> 
+                    {% if producto.disponible %}
+                        <span class="text-success">Disponible</span>
+                    {% else %}
+                        <span class="text-danger">No disponible</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Fecha de creación:</strong> {{ producto.fecha_creacion|date:"d/m/Y H:i" }}</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Última actualización:</strong> {{ producto.fecha_actualizacion|date:"d/m/Y H:i" }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

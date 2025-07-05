@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Producto{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Nuevo Producto</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="id_nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                            {{ form.nombre }}
+                            <div class="invalid-feedback">
+                                El nombre del producto es obligatorio.
+                            </div>
+                            {% if form.nombre.errors %}
+                                <div class="text-danger">
+                                    {{ form.nombre.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id_categoria" class="form-label">Categoría</label>
+                            {{ form.categoria }}
+                            <div class="invalid-feedback">
+                                Seleccione una categoría o deje en blanco para producto sin categoría.
+                            </div>
+                            {% if form.categoria.errors %}
+                                <div class="text-danger">
+                                    {{ form.categoria.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_descripcion" class="form-label">Descripción <span class="text-danger">*</span></label>
+                        {{ form.descripcion }}
+                        <div class="invalid-feedback">
+                            La descripción del producto es obligatoria.
+                        </div>
+                        {% if form.descripcion.errors %}
+                            <div class="text-danger">
+                                {{ form.descripcion.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="id_precio" class="form-label">Precio <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                {{ form.precio }}
+                                <div class="invalid-feedback">
+                                    El precio es obligatorio y debe ser mayor a 0.
+                                </div>
+                            </div>
+                            {% if form.precio.errors %}
+                                <div class="text-danger">
+                                    {{ form.precio.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_stock" class="form-label">Stock</label>
+                            {{ form.stock }}
+                            {% if form.stock.errors %}
+                                <div class="text-danger">
+                                    {{ form.stock.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_imagen" class="form-label">Imagen</label>
+                        {{ form.imagen }}
+                        <div class="mt-2">
+                            <img id="preview-imagen" src="#" alt="Vista previa" style="max-height: 200px; display: none;" class="img-thumbnail">
+                        </div>
+                        {% if form.imagen.errors %}
+                            <div class="text-danger">
+                                {{ form.imagen.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.disponible }}
+                        <label class="form-check-label" for="id_disponible">Disponible</label>
+                        {% if form.disponible.errors %}
+                            <div class="text-danger">
+                                {{ form.disponible.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'productos:lista_productos' %}" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
