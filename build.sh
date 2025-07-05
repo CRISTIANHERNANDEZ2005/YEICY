@@ -16,7 +16,7 @@ source .venv/bin/activate
 python -m pip install --upgrade pip==23.3.2 setuptools==68.2.2 wheel==0.42.0
 
 # Instalar Pillow con wheel precompilado
-pip install --use-pep517 --only-binary=:all: Pillow==9.5.0
+pip install --use-pep517 --only-binary=:all: Pillow==10.3.0
 
 # Instalar resto de dependencias
 pip install -r requirements.txt --no-cache-dir

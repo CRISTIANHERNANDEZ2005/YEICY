@@ -1,6 +1,6 @@
 # Dependencias principales
-Django==4.2.7
-Pillow==9.5.0  # Para el manejo de imágenes (versión estable)
+Django==4.2.11
+Pillow==10.3.0  # Para el manejo de imágenes (versión estable)
 
 # Dependencias de desarrollo
 djangorestframework==3.14.0  # Opcional, para crear APIs
