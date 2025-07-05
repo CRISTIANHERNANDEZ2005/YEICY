@@ -1,14 +1,4 @@
-#!/bin/bas
-
-# Actualizar el sistema e instalar dependencias necesarias
-apt-get update
-apt-get install -y python3-dev build-essential
-
-# Instalar las dependencias de Python
-pip install --upgrade pip
-pip install -r requirements.txt
-
-# Ejecutar las migraciones de Django y recolectar archivos estáticos
+#!/usr/bin/env bash
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 python manage.py runserver 0.0.0.0:10000
