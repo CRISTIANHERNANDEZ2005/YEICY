@@ -10,6 +10,6 @@ django-debug-toolbar==4.2.0  # Herramienta de depuración (solo desarrollo)
 
 # Dependencias de producción
 gunicorn==21.2.0  # Servidor WSGI para producción
-psycopg2-binary==2.9.9  # Adaptador PostgreSQL compatible con Python 3.13
+psycopg[binary,pool]==3.1.14  # Adaptador PostgreSQL moderno para Python 3.13+
 whitenoise==6.5.0  # Para servir archivos estáticos en producción
 dj-database-url==2.1.0  # Para configuración de base de datos en producción

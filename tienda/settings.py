@@ -96,7 +96,7 @@ else:
             'PORT': os.getenv('DB_PORT'),
             'OPTIONS': {
                 'client_encoding': 'UTF8',
-                'sslmode': os.getenv('DB_SSLMODE', 'require')
+                'sslmode': os.getenv('DB_SSLMODE'),
                 # Eliminado el parámetro channel_binding que no es compatible con conexiones pooled de Neon
             }
         }
