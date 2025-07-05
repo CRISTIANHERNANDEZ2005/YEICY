@@ -92,7 +92,7 @@ else:
         'OPTIONS': {
             'client_encoding': 'UTF8',
             'sslmode': 'require'
-        },,
+        },
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USER'),
             'PASSWORD': os.getenv('DB_PASSWORD'),
